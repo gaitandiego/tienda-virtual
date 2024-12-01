@@ -71,7 +71,7 @@ const Producto = () => {
                     <NumericFormat className='informacion-envio-precio' displayType="text" value={producto.precio} prefix={'$'} thousandSeparator={true} />
 
                     <div className='informacion-anadir'>
-                        <select className='btn' >
+                        <select className='btn'>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                         </select>
