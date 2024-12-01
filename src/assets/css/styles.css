@@ -1,0 +1,464 @@
+@font-face {
+    font-family: 'abel';
+    src: url('../fonts/Abel.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: 'AileronFont';
+    src: url('../fonts/Aileron.otf') format('opentype');
+}
+
+body {
+    font-weight: 300;
+    font-family: abel, Roboto-medium;
+}
+
+.banner-pagina-individual {
+    position: relative;
+    /* Necesario para usar pseudo-elementos */
+    font-size: calc(2rem + 2vw);
+    color: #ffffff;
+    text-align: center;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    background-image: url('../images/banner.png');
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.banner-pagina-individual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.banner-pagina-individual * {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-rounded {
+    border-radius: 10em;
+}
+
+.navbar {
+    box-shadow: none;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.menu-navegacion-componente .nav-link:hover {
+    color: purple !important;
+}
+
+.menu-container {
+    background: rgb(33, 39, 51);
+}
+
+.menu-navegacion-componente-font {
+    font-size: .8rem;
+}
+
+.menu-navegacion-componente-font a.glink img {
+    width: 24px;
+    height: 24px;
+}
+
+.menu-navegacion-componente-font {
+    background-color: #000;
+    color: #ffffff;
+}
+
+.menu-navegacion-componente a {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.menu-navegacion-componente .nav-item {
+    margin-right: 9px;
+}
+
+.menu-navegacion-componente-font {
+    font-size: .8rem;
+}
+
+.menu-navegacion-componente-font a.glink img {
+    width: 24px;
+    height: 24px;
+}
+
+.carrito-compra {
+    position: relative;
+    border: 2px solid purple;
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 41px;
+    height: 41px;
+    margin-right: 10px;
+    background-color: #000;
+}
+
+.carrito-usuario {
+    width: 35px;
+    height: 35px;
+    border-color: #ffff;
+}
+
+.carrito-compra:hover {
+    color: purple;
+}
+
+.carrito-compra .contador-numero {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    background-color: purple;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrito-compra .contador-numero p {
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+
+.carrito-compra-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    background-color: #000;
+    color: #ffffff;
+    padding: 30px;
+}
+
+.footer {
+    display: flex;
+    margin-bottom: 60px;
+    font-family: 'AileronFont';
+}
+
+.footer_item {
+    text-transform: capitalize;
+    color: #ffffff;
+    text-align: start;
+}
+
+.footer_item .nav-link {
+    line-height: normal;
+    padding: 0px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.footer_item .nav-link:hover,
+.footer .nav-item:hover {
+    color: purple !important;
+    cursor: pointer;
+}
+
+
+
+.footer_item svg {
+    color: purple;
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.footer_item p {
+    margin: 3px;
+}
+
+.footer .footer_item .nav-item {
+    width: 200px;
+    display: flex;
+}
+
+.footer .footer-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-container .footer-derechos {
+    color: #ffffff;
+    padding: 30px;
+    border-top: .1px solid gray;
+    display: flex;
+    justify-content: center;
+    height: 0px;
+}
+
+.tienda {
+    margin: 30px 10px;
+}
+
+
+.tienda-productos .producto-componente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.tienda-productos .producto-componente h5 {
+    margin: 0;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.tienda-productos .producto-componente img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.tienda-productos .producto-componente .btn {
+    background: linear-gradient(36deg, #d039de 0%, #93339c 100%);
+    width: 80%;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.tienda-productos .producto-componente .btn:hover {
+    opacity: 0.8;
+}
+
+.tienda-productos .pagination .page-item {
+    border: .5px solid gray;
+    margin: 2px;
+}
+
+
+.tienda-productos .pagination .page-link {
+    font-size: 16px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+.tienda-productos .pagination .page-link span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+.tienda_menu {
+    text-align: start;
+}
+
+.tienda_buscar {
+    margin-bottom: 2rem
+}
+
+.tienda_menu h5 {
+    font-weight: bold;
+}
+
+.tienda_menu input {
+    border-radius: 0px;
+}
+
+.tienda-categorias_lista li {
+    list-style: none;
+}
+
+.tienda-categorias_lista ul {
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+
+.tienda-categorias_lista_items {
+    margin-top: 15px;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tienda-categorias-bold {
+    font-weight: bold;
+}
+
+.categoria-seleccionada {
+    color: purple;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
+.tienda-productos .pagination .page-item {
+    border: .5px solid gray;
+    margin: 2px;
+}
+
+
+.tienda-productos .pagination .page-link {
+    font-size: 16px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+.tienda-productos .pagination .page-link span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.pagination {
+    margin: 15px auto;
+    display: flex;
+    list-style: none;
+    outline: none;
+    justify-content: center;
+}
+
+.pagination>.active>a {
+    background-color: #000000;
+    border-color: #000000;
+    font-weight: bold;
+    color: #fff;
+}
+
+.pagination>li>a {
+    border: 1px solid #dedcdc;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+    margin: 2px;
+}
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
+    background-color: #000000;
+    border-color: #000000;
+    outline: none;
+
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    color: #000000;
+    font-weight: bold;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span,
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    border-radius: unset
+}
+
+.tienda-productos .producto-componente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.tienda-productos .producto-componente h5 {
+    margin: 0;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.tienda-productos .producto-componente img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.tienda-productos .producto-componente .btn {
+    background: linear-gradient(36deg, #d039de 0%, #93339c 100%);
+    width: 80%;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.tienda-productos .producto-componente .btn:hover {
+    opacity: 0.8;
+}
+
+.card-fecha-entrega {
+    background: linear-gradient(36deg, #d039de 0%, #93339c 100%);
+    color: white;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-fecha-entrega .titulo {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-fecha-entrega .tiempo {
+    font-size: 14px;
+    margin: 0;
+}
+
+.card-fecha-entrega .fecha {
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    display: flex;
+    font-weight: bold;
+}
+
+.card-fecha-entrega .mes {
+    display: block;
+    font-size: 16px;
+    margin-top: 47px;
+    margin-right: 10px;
+}
+
+.card-fecha-entrega .dia {
+    font-size: 60px;
+}
