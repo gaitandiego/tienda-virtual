@@ -10,7 +10,7 @@ import MenuNavegacion from './componentes/menu/MenuNavegacion';
 import Footer from './componentes/footer/Footer';
 import Tienda from './paginas/tienda/Tienda';
 import SubirProducto from './paginas/subirProducto/SubirProducto';
-
+import Producto from './paginas/producto/Producto';
 
 const App = () => (
   <div className='app'>
@@ -18,8 +18,7 @@ const App = () => (
       <MenuNavegacion />
       <Routes>
         <Route index element={<Tienda />} />
-        {/* <Route path="/:id/:productoId" element={<Pagina />} />
-        <Route path="/:id" element={<Pagina />} /> */}
+        <Route path="/:id/:productoId" element={<Producto />} />
         <Route path="/notFound" element={<NotFound />} />
         <Route path="/subir-producto" element={<SubirProducto />} />
       </Routes>

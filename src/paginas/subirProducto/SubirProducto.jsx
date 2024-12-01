@@ -1,18 +1,13 @@
 import { MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBInput, MDBRow, MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact'
 import React, { useEffect, useState } from 'react'
 import Chart from 'react-google-charts';
+import { Controller, useForm } from 'react-hook-form';
 import { NumericFormat } from 'react-number-format';
 import { v4 as uuidv4 } from 'uuid';
 
 const SubirProducto = () => {
+    const { register, handleSubmit, control, formState: { errors }, reset } = useForm();
     const [productos, setProductos] = useState(JSON.parse(localStorage.getItem('productos')) || [])
-
-    const [producto, setProducto] = useState({
-        nombre: '',
-        descripcion: '',
-        precio: '',
-        id: uuidv4()
-    })
     const [datosChart, setDatosChart] = useState([])
 
     useEffect(() => {
@@ -26,30 +21,42 @@ const SubirProducto = () => {
             return acc;
         }, {});
 
-        const datos = Object.entries(precios).map(([precio, cantidad]) => [`$${precio}`, cantidad]);
+        const datos = Object.entries(precios).map(([precio, cantidad]) => {
+            const precioFormateado = new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(precio);
+            const precioSinEspacio = precioFormateado.replace(/\s/g, '');
+            return [precioSinEspacio, cantidad];
+        });
+
         setDatosChart([["Precio", "Cantidad"], ...datos]);
     }, [productos])
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const nuevosProductos = [...productos, producto];
-
+    const onSubmit = data => {
+        const nuevosProductos = [...productos, { ...data, id: uuidv4() }];
         setProductos(nuevosProductos);
         localStorage.setItem('productos', JSON.stringify(nuevosProductos));
-
-        setProducto({
-            nombre: '',
-            descripcion: '',
-            precio: '',
-            id: uuidv4()
-        })
+        reset({
+            nombre: "",
+            descripcion: "",
+            precio: null
+        });
     }
 
     const opcionesChart = {
         title: "Cantidad de productos por precio",
+        is3D: true,
+        format: {
+            currency: {
+                style: 'currency',
+                currency: 'COP',
+            }
+        },
     };
-
 
     return (
         <>
@@ -95,7 +102,7 @@ const SubirProducto = () => {
                     <MDBCol md="4">
                         <MDBCard>
                             <MDBCardBody>
-                                <form onSubmit={handleSubmit}>
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <p className="h5 text-center mb-4">Subir Producto</p>
                                     <MDBRow>
                                         <MDBCol md="12" className="mb-3">
@@ -106,13 +113,11 @@ const SubirProducto = () => {
                                                 Nombre
                                             </label>
                                             <input
+                                                {...register("nombre", { required: true })}
                                                 name="nombre"
                                                 type="text"
-                                                className="form-control"
+                                                className={`form-control ${errors.nombre && 'is-invalid'}`}
                                                 placeholder="Nombre"
-                                                required
-                                                value={producto.nombre}
-                                                onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
                                             />
                                         </MDBCol>
                                         <MDBCol md="12" className="mb-3">
@@ -122,14 +127,12 @@ const SubirProducto = () => {
                                             >
                                                 Descripción
                                             </label>
-                                            <input
-                                                required
+                                            <textarea
+                                                {...register("descripcion", { required: true })}
                                                 name="descripcion"
                                                 type="text"
-                                                className="form-control"
+                                                className={`form-control ${errors.descripcion && 'is-invalid'}`}
                                                 placeholder="Descripción"
-                                                value={producto.descripcion}
-                                                onChange={(e) => setProducto({ ...producto, descripcion: e.target.value })}
                                             />
                                         </MDBCol>
                                         <MDBCol md="12" className="mb-3">
@@ -139,15 +142,21 @@ const SubirProducto = () => {
                                             >
                                                 Precio
                                             </label>
-                                            <input
-                                                required
+
+                                            <Controller
+                                                control={control}
                                                 name="precio"
-                                                type="number"
-                                                className="form-control"
-                                                placeholder="Precio"
-                                                value={producto.precio}
-                                                onChange={(e) => setProducto({ ...producto, precio: e.target.value })}
+                                                rules={{ required: true }}
+                                                render={({ field }) => <NumericFormat
+                                                    className={`form-control ${errors.precio && 'is-invalid'}`}
+                                                    prefix="$"
+                                                    thousandSeparator={true}
+                                                    placeholder="Precio"
+                                                    onValueChange={(values) => field.onChange(values.floatValue)}
+                                                    value={field.value || ''}
+                                                />}
                                             />
+
                                         </MDBCol>
                                     </MDBRow>
 

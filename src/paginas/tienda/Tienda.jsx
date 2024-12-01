@@ -26,7 +26,27 @@ const Tienda = () => {
         {
             id: 5,
             nombre: 'Categoría 5',
-        }
+        },
+        {
+            id: 6,
+            nombre: 'Categoría 6',
+        },
+        {
+            id: 7,
+            nombre: 'Categoría 7',
+        },
+        {
+            id: 8,
+            nombre: 'Categoría 8',
+        },
+        {
+            id: 9,
+            nombre: 'Categoría 9',
+        },
+        {
+            id: 10,
+            nombre: 'Categoría 10',
+        },
     ])
 
     const [enlacesInteres, setEnlacesInteres] = useState([{
